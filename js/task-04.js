@@ -1,21 +1,39 @@
-const reduceBtn = document.querySelector('button[data-action="decrement"]');
+const reduceBtn = document.querySelector('[data-action="decrement"]');
 
-const increasBtn = document.querySelector('button[data-action="increment"]');
+const increasBtn = document.querySelector('[data-action="increment"]');
 
 const valueNum = document.querySelector('#value');
 
 
-const counterValue = function ({ initialValue = 0, step = 1 }) {
-    this.value = initialValue;
-    this.step = step;
+
+let counterValue = 0;
+
+const increment = () => {
+    counterValue += 1;
+    valueNum.textContent = counterValue;
 }
 
-counterValue.saveBtn = function () {
-    this.value += this.step;
+const decrement = () => {
+    counterValue -= 1;
+    valueNum.textContent = counterValue;
 }
 
-counterValue.closeBtn = function () {
-    this.value -= this.step;
-}
+increasBtn.addEventListener('click', increment); 
+reduceBtn.addEventListener('click', decrement);
 
-const counter = new counterValue({step: 1 });
+// const counterValue = function ({ initialValue = 0, step = 1 }) {
+//     this.value = initialValue;
+//     this.step = step;
+// }
+
+// counterValue.increasBtn = function () {
+//     this.value += this.step;
+// }
+
+// counterValue.reduceBtn = function () {
+//     this.value -= this.step;
+// }
+
+// console.log(counterValue);
+
+
